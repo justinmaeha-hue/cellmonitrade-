@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f97316">
+<title>Cellmoney Trade | PNG Mobile Top-Ups</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,sans-serif;background:#fff7ed;color:#1e293b}
+header{background:linear-gradient(120deg,#141b2cdd,#17203399),url('1779490161340.jpg') center/cover;min-height:350px;color:white;padding:22px 18px 65px}
+.wrap{max-width:1050px;margin:auto}
+nav{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.logo{font-size:21px;font-weight:900}
+.logo span{color:#fb923c}
+nav a{color:white;text-decoration:none;font-size:14px}
+h1{font-size:clamp(35px,7vw,60px);margin:65px 0 15px;line-height:1.1}
+header p{max-width:570px;line-height:1.7;color:#f1f5f9}
+.btn{display:inline-block;background:#f97316;color:white;border:0;padding:14px 20px;border-radius:12px;font-size:15px;font-weight:bold;text-decoration:none;cursor:pointer;text-align:center}
+.btn:hover{background:#ea580c}
+main{max-width:1050px;margin:-35px auto 40px;padding:0 15px;position:relative;display:grid;grid-template-columns:1.5fr 1fr;gap:20px}
+.card{background:white;border-radius:20px;padding:23px;margin-bottom:20px;border:1px solid #ffedd5;box-shadow:0 8px 25px #9a34121a}
+h2{font-size:23px;margin:5px 0 12px}
+p{line-height:1.6}
+.muted{color:#64748b;font-size:14px}
+.tag{background:#ffedd5;color:#9a3412;padding:7px 12px;border-radius:30px;font-size:12px;font-weight:bold;display:inline-block;margin-bottom:12px}
+.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:20px 0}
+.price{border:1px solid #fed7aa;background:#fffaf5;border-radius:12px;padding:12px 4px;cursor:pointer;font-weight:bold;color:#1e293b}
+.price small{display:block;font-weight:normal;color:#64748b;margin-top:5px;font-size:10px}
+.price.active{border:2px solid #f97316;background:#ffedd5;color:#9a3412}
+label{display:block;font-weight:bold;font-size:14px;margin:17px 0 7px}
+input,select{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:11px;font-size:15px;background:white}
+input:focus,select:focus{outline:2px solid #fb923c}
+.summary{background:#fff7ed;border:1px solid #fed7aa;padding:15px;border-radius:14px;margin:20px 0}
+.line{display:flex;justify-content:space-between;gap:10px;margin:11px 0}
+.total{border-top:1px solid #fed7aa;padding-top:13px;font-weight:900;font-size:20px}
+.full{width:100%;display:block}
+.outline{background:white;border:1px solid #f97316;color:#9a3412;border-radius:12px;padding:13px;font-weight:bold;text-align:center;text-decoration:none;cursor:pointer}
+.agent{display:flex;gap:15px;align-items:center}
+.agent img{height:75px;width:75px;object-fit:cover;border-radius:50%;border:3px solid #ffedd5}
+.note{background:#fff7ed;border-left:4px solid #f97316;padding:13px;border-radius:8px;font-size:13px}
+.status{color:#9a3412;font-size:13px;font-weight:bold;min-height:15px}
+footer{text-align:center;background:#172033;color:#cbd5e1;padding:30px 15px;font-size:13px}
+@media(max-width:750px){
+main{display:block}
+.prices{grid-template-columns:repeat(3,1fr)}
+.card{padding:18px}
+header{min-height:330px}
+h1{margin-top:55px}
+}
+@media(max-width:350px){.prices{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<header id="home">
+<div class="wrap">
+<nav>
+<div class="logo"><span>●</span> Cellmoney Trade</div>
+<a href="#contact">Contact Agent ↗</a>
+</nav>
+<h1>Mobile Top-Ups,<br>Made Simple.</h1>
+<p>Welcome to Cellmoney Trade. Request Digicel, Vodafone and Telikom mobile top-ups in Papua New Guinea.</p>
+<a class="btn" href="#order">Get Started →</a>
+</div>
+</header>
+
+<main>
+<div>
+<section class="card" id="order">
+<span class="tag">EASY MOBILE TOP-UP</span>
+<h2>Buy Mobile Top-Up</h2>
+<p class="muted">Choose an amount from K5 to K200. A 10% service fee applies.</p>
+
+<div class="prices" id="prices"></div>
+
+<label for="network">Select Mobile Network</label>
+<select id="network">
+<option value="">Choose network</option>
+<option>Digicel</option>
+<option>Vodafone</option>
+<option>Telikom</option>
+</select>
+
+<label for="phone">Customer Mobile Number</label>
+<input type="tel" id="phone" placeholder="7XXXXXXX or 6757XXXXXXX" maxlength="14">
+
+<div class="summary">
+<div class="line"><span>Top-Up Amount</span><strong id="value">K0.00</strong></div>
+<div class="line"><span>Service Fee (10%)</span><strong id="fee">K0.00</strong></div>
+<div class="line total"><span>Total Payment</span><span id="total">K0.00</span></div>
+</div>
+
+<button class="btn full" id="orderBtn">Continue to WhatsApp →</button>
+<p class="status" id="orderStatus" role="status"></p>
+<p class="muted">Orders require manual confirmation. Do not pay until the agent confirms your request.</p>
+</section>
+
+<section class="card">
+<h2>Share Payment Receipt</h2>
+<p class="muted">After payment, send your receipt to the agent for verification.</p>
+<label for="receiptFile">Select Receipt Screenshot</label>
+<input type="file" id="receiptFile" accept="image/png,image/jpeg,image/webp">
+<br><br>
+<button class="btn full" id="receiptBtn">Share Receipt</button>
+<p class="status" id="receiptStatus" role="status"></p>
+<p class="muted">Your receipt is not stored on this website.</p>
+</section>
+</div>
+
+<aside>
+<section class="card">
+<h2>Payment Details</h2>
+<p class="muted">Confirm these details with the agent before making payment.</p>
+<div class="summary">
+<div class="line"><span>Bank</span><strong>BSP Financial Group</strong></div>
+<div class="line"><span>Account Name</span><strong>Bhushan Maya</strong></div>
+<div class="line"><span>Account Number</span><strong id="account">0001466960</strong></div>
+</div>
+<button class="outline full" id="copyBtn">Copy Account Number</button>
+<p class="status" id="copyStatus" role="status"></p>
+</section>
+
+<section class="card" id="contact">
+<div class="agent">
+<img src="file_00000000bfb481faa5d435ad6d7fd4c6.png" alt="Agent profile">
+<div>
+<h2>Contact Agent</h2>
+<p class="muted">Bhushan Maya</p>
+</div>
+</div>
+<p><strong>Phone:</strong> +675 7842 3441</p>
+<a class="btn full" href="https://wa.me/67578423441" target="_blank" rel="noopener">Chat on WhatsApp</a>
+<br>
+<a class="outline full" href="tel:+67578423441">Call Agent</a>
+</section>
+
+<section class="card">
+<h2>Customer Safety</h2>
+<p class="note">Never share your bank PIN, password or verification codes. Always confirm payment details before sending money.</p>
+<p class="muted">Cellmoney Trade is an independent order-request website, not an official Digicel, Vodafone, Telikom or CellMoni service. All top-ups are manually processed, subject to availability.</p>
+</section>
+</aside>
+</main>
+
+<footer>
+© 2026 Cellmoney Trade. All Rights Reserved.
+</footer>
+
+<script>
+const agent = "67578423441";
+let selected = 0;
+const $ = id => document.getElementById(id);
+const money = n => "K" + n.toFixed(2);
+
+for(let n=5;n<=200;n+=5){
+ const b=document.createElement("button");
+ b.type="button";
+ b.className="price";
+ b.innerHTML="<strong>"+money(n)+"</strong><small>Pay "+money(n*1.1)+"</small>";
+ b.onclick=()=>{
+  selected=n;
+  document.querySelectorAll(".price").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  $("value").textContent=money(n);
+  $("fee").textContent=money(n*0.1);
+  $("total").textContent=money(n*1.1);
+ };
+ $("prices").appendChild(b);
+}
+
+function whatsapp(message){
+ window.location.href="https://wa.me/"+agent+"?text="+encodeURIComponent(message);
+}
+
+$("orderBtn").onclick=()=>{
+ const network=$("network").value;
+ const phone=$("phone").value.replace(/[\s+()-]/g,"");
+ let error="";
+ if(!selected) error="Please select a top-up amount.";
+ else if(!network) error="Please select a mobile network.";
+ else if(!/^(675)?7\d{7}$/.test(phone)) error="Enter a valid PNG mobile number.";
+ if(error){
+  $("orderStatus").textContent=error;
+  return;
+ }
+ $("orderStatus").textContent="Opening WhatsApp...";
+ whatsapp(
+ "Hello Cellmoney Trade! Please confirm my order before payment.\n\n"+
+ "Network: "+network+"\n"+
+ "Customer Number: "+phone+"\n"+
+ "Top-Up Amount: "+money(selected)+"\n"+
+ "Service Fee: "+money(selected*0.1)+"\n"+
+ "Total Payment: "+money(selected*1.1)
+ );
+};
+
+$("copyBtn").onclick=async()=>{
+ try{
+  await navigator.clipboard.writeText($("account").textContent);
+  $("copyStatus").textContent="Account number copied!";
+ }catch(e){
+  $("copyStatus").textContent="Please copy the account number manually.";
+ }
+};
+
+$("receiptBtn").onclick=async()=>{
+ const file=$("receiptFile").files[0];
+ if(!file){
+  $("receiptStatus").textContent="Please select a receipt image.";
+  return;
+ }
+ if(!["image/png","image/jpeg","image/webp"].includes(file.type)||file.size>10*1024*1024){
+  $("receiptStatus").textContent="Select a JPG, PNG or WebP image under 10 MB.";
+  return;
+ }
+ const msg="Hello Cellmoney Trade. Please verify my payment receipt.";
+ if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+  try{
+   await navigator.share({files:[file],text:msg});
+   $("receiptStatus").textContent="Complete sharing through your selected app.";
+   return;
+  }catch(e){
+   if(e.name==="AbortError"){
+    $("receiptStatus").textContent="Sharing cancelled.";
+    return;
+   }
+  }
+ }
+ $("receiptStatus").textContent="Attach your receipt manually in WhatsApp.";
+ whatsapp(msg);
+};
+</script>
+
+</body>
+</html>
+
